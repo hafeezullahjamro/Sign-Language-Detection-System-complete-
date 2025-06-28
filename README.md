@@ -14,7 +14,7 @@ The project is an AI-based system to detect hand gestures used in sign language.
 * hand gesture image samples (7800)
 
 
-make sure you have instlled python versiob 3.10 or lower till 3.7. Because mediapipe is not compatable with latest version of python
+Make sure you have Python 3.10 or lower (down to 3.7) installed because MediaPipe is not compatible with the latest Python versions.
 
 **Libraries Required:**
 
@@ -43,7 +43,8 @@ Ok, Peace, Please, Power, Right, Rock, Smile, Stop, Thank you, Yes
 2. Change this line to match the gesture you're saving:
 
    ```
-   folder = r"E:\path\to\your\gesture_folder"
+   from pathlib import Path
+   folder = Path("Data") / "YourGesture"
    ```
 3. Run the script:
 
@@ -55,22 +56,21 @@ Ok, Peace, Please, Power, Right, Rock, Smile, Stop, Thank you, Yes
 
 
 **How to Run Gesture Prediction:**
+1. Ensure the model and label paths in `test.py` point to the `AI_MODEL` folder:
 
-1. Make sure the model path and label path are correct in `test.py`:
-
-   ```
-   model_path = r"your_path\keras_model.h5"
-   labels_path = r"your_path\labels.txt"
+   ```python
+   from pathlib import Path
+   BASE_DIR = Path(__file__).resolve().parent.parent
+   model_path = BASE_DIR / "AI_MODEL" / "keras_model.h5"
+   labels_path = BASE_DIR / "AI_MODEL" / "labels.txt"
    ```
 2. Run the test script:
 
-   ```
+   ```bash
    python test.py
    ```
 3. It will open the webcam and start detecting gestures in real time.
 4. Press **`q`** to quit.
-
-
 **How it Works:**
 
 * The program uses **OpenCV** and **cvzone** to detect hands.

@@ -7,11 +7,13 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import DepthwiseConv2D as _DepthwiseConv2D
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
+from pathlib import Path
 
 # 1. Configuration: update these paths as needed
 DATA_DIR     = "Data"            # Folder containing one subfolder per gesture label
-LABELS_FILE  = r"E:\current project\AI_PROJECT\AI_MODEL\labels.txt"     # Your labels file from the project
-MODEL_FILE   = r"E:\current project\AI_PROJECT\AI_MODEL\keras_model_custom2.h5"  # Your trained model file
+BASE_DIR     = Path(__file__).resolve().parent.parent
+LABELS_FILE  = BASE_DIR / "AI_MODEL" / "labels.txt"
+MODEL_FILE   = BASE_DIR / "AI_MODEL" / "keras_model_custom2.h5"
 
 # 2. Custom layer definition for loading the model
 class DepthwiseConv2D(_DepthwiseConv2D):

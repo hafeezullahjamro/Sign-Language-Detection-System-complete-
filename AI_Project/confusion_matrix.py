@@ -7,11 +7,13 @@ from sklearn.metrics import confusion_matrix, classification_report
 from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import DepthwiseConv2D as _DepthwiseConv2D
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
+from pathlib import Path
 
 # ——— CONFIGURE THESE PATHS ———
-DATA_DIR    = r"E:\current project\AI_PROJECT\AI_Project\Data"         # your folder of per-gesture subfolders
-LABELS_FILE = r"E:\current project\AI_PROJECT\AI_MODEL\labels.txt"   # your labels.txt
-MODEL_FILE  =r"E:\current project\AI_PROJECT\AI_MODEL\keras_model_custom2.h5" # your .h5 model file
+BASE_DIR    = Path(__file__).resolve().parent.parent
+DATA_DIR    = BASE_DIR / "AI_Project" / "Data"         # your folder of per-gesture subfolders
+LABELS_FILE = BASE_DIR / "AI_MODEL" / "labels.txt"   # your labels.txt
+MODEL_FILE  = BASE_DIR / "AI_MODEL" / "keras_model_custom2.h5"  # your .h5 model file
 
 # 1) Custom object for loading your model
 class DepthwiseConv2D(_DepthwiseConv2D):

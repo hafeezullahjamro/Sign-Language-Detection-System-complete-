@@ -10,11 +10,13 @@ from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import DepthwiseConv2D as _DepthwiseConv2D
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
+from pathlib import Path
 
 # —— CONFIGURATION —— 
 DATA_DIR         = "Data"                          # Folder with one subfolder per gesture
-MODEL_FILE       = r"E:\current project\AI_PROJECT\AI_MODEL\keras_model_custom2.h5"         # Your saved model
-LABELS_FILE      = r"E:\current project\AI_PROJECT\AI_MODEL\labels.txt"                   # labels.txt file
+BASE_DIR         = Path(__file__).resolve().parent.parent
+MODEL_FILE       = BASE_DIR / "AI_MODEL" / "keras_model_custom2.h5"
+LABELS_FILE      = BASE_DIR / "AI_MODEL" / "labels.txt"
 IMG_SIZE         = (224, 224)
 BATCH_SIZE       = 32
 N_SPLITS         = 5                               # Number of folds

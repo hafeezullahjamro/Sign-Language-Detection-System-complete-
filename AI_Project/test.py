@@ -6,6 +6,7 @@ from cvzone.HandTrackingModule import HandDetector
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import DepthwiseConv2D as _DepthwiseConv2D
+from pathlib import Path
 
 # ——— CUSTOM DEPTHWISE THAT DROPS `groups` ———
 class DepthwiseConv2D(_DepthwiseConv2D):
@@ -15,8 +16,9 @@ class DepthwiseConv2D(_DepthwiseConv2D):
         return super().from_config(config)
 
 # Load the trained Keras model and labels
-model_path = r"E:\current project\AI_PROJECT\AI_MODEL\keras_model_custom2.h5"
-labels_path = r"E:\current project\AI_PROJECT\AI_MODEL\labels.txt"
+BASE_DIR = Path(__file__).resolve().parent.parent
+model_path = BASE_DIR / "AI_MODEL" / "keras_model_custom2.h5"
+labels_path = BASE_DIR / "AI_MODEL" / "labels.txt"
 
 print("Loading Model...")
 model = load_model(
