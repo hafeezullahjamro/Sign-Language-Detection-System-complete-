@@ -3,11 +3,13 @@ from cvzone.HandTrackingModule import HandDetector
 import numpy as np
 import tensorflow as tf
 from keras.models import load_model
+from pathlib import Path
 import math
 
 # Load the trained Keras model and labels
-model_path = r"E:\current project\AI_PROJECT\AI_MODEL\keras_model.h5"
-labels_path = r"E:\current project\AI_PROJECT\AI_MODEL\labels.txt"
+BASE_DIR = Path(__file__).resolve().parent.parent
+model_path = BASE_DIR / "AI_MODEL" / "keras_model.h5"
+labels_path = BASE_DIR / "AI_MODEL" / "labels.txt"
 
 print("Loading Model...")
 model = load_model(model_path)

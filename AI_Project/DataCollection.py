@@ -4,6 +4,7 @@ import numpy as np
 import math
 import time
 import os
+from pathlib import Path
 
 # --- Camera setup ---
 cap = cv2.VideoCapture(0)
@@ -20,7 +21,8 @@ detector = HandDetector(maxHands=1)
 offset = 20
 imgSize = 224
 counter = 0
-folder = r"E:\current project\AI_PROJECT\AI_Project\Data\Nice"  # Change to your folder path
+BASE_DIR = Path(__file__).resolve().parent
+folder = BASE_DIR / "Data" / "Nice"  # Change to your folder path
 
 # Make sure output folder exists
 os.makedirs(folder, exist_ok=True)
